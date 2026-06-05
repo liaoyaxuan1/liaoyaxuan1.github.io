@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>弹性布局焦点图</title>
+    <style>
+        /* 外层轮播容器：弹性布局，左右按钮+中间内容纵向排列 */
+        .banner {
+            width: 100%;
+            max-width: 900px;
+            height: 320px;
+            margin: 0 auto;
+            /* 弹性横向排布：左按钮、中间区域、右按钮 */
+            display: flex;
+            align-items: center; /* 垂直居中三个子元素 */
+            justify-content: space-between;
+            /* 大图背景，css引入背景图 */
+            background: url("/images/banner1.jpg") no-repeat center/cover;
+            position: relative;
+            box-sizing: border-box;
+            padding: 0 15px;
+        }
+        /* 左右箭头公共样式，css背景箭头图 */
+        .arrow-left, .arrow-right {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 50%;
+            cursor: pointer;
+        }
+        .arrow-left {
+            background-image: url("/images/arrow1.png");
+        }
+        .arrow-right {
+            background-image: url("/images/arrow2.png");
+        }
+        /* 底部圆点容器：定位在banner底部居中 */
+        .dot-wrap {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            /* 弹性横向排列四个圆点 */
+            display: flex;
+            gap: 8px; /* 圆点间距 */
+        }
+        /* 单个圆点样式，css背景圆点图 */
+        .dot-item {
+            width: 22px;
+            height: 22px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+        /* 选中圆点 */
+        .dot-item.active {
+            background-image: url("/images/point2.png");
+        }
+        /* 未选中圆点 */
+        .dot-item.normal {
+            background-image: url("/images/point1.png");
+        }
+    </style>
+</head>
+<body>
+    <!-- 焦点图外层盒子 -->
+    <div class="banner">
+        <!-- 左箭头 -->
+        <div class="arrow-left"></div>
+        <!-- 右箭头 -->
+        <div class="arrow-right"></div>
+        <!-- 底部圆点容器 -->
+        <div class="dot-wrap">
+            <div class="dot-item normal"></div>
+            <div class="dot-item active"></div>
+            <div class="dot-item normal"></div>
+            <div class="dot-item normal"></div>
+        </div>
+    </div>
+</body>
+</html>
